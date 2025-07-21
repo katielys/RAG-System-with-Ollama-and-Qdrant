@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+langchain
+faiss-cpu
+tiktoken
+pymupdf
+pandas
+tqdm
+weaviate-client
+cohere
+transformers
+sentence-transformers
+qdrant-client
+ollama

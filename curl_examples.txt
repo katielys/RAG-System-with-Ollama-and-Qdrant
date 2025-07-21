@@ -1,0 +1,33 @@
+
+# Upload a text file
+curl -X POST "http://localhost:8000/upload/" \
+  -H "accept: application/json" \
+  -H "Content-Type: multipart/form-data" \
+  -F "file=@sample.txt"
+
+# Query chunks from Qdrant
+curl -X POST "http://localhost:8000/query/" \
+  -H "accept: application/json" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "query_vector": [0.1, 0.2, 0.3, 0.4, 0.5],
+        "top_k": 5
+      }'
+
+# Generate answer from context
+curl -X POST "http://localhost:8000/answer/" \
+  -H "accept: application/json" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "query": "What is the purpose of the document?",
+        "context": "This document describes the architecture of a RAG system..."
+      }'
+
+# Evaluate predicted answer
+curl -X POST "http://localhost:8000/evaluate/" \
+  -H "accept: application/json" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "predicted": "It describes a RAG system.",
+        "ground_truth": "It describes a RAG system."
+      }'
